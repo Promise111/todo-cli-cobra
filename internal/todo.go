@@ -1,8 +1,8 @@
 package internal
 
 import (
-	"time"
 	"github.com/promise111/todo-cli-cobra/internal/utils"
+	"time"
 )
 
 type Todo struct {
@@ -40,5 +40,24 @@ func (todos *Todos) Delete(index int) error {
 		return err
 	}
 	*todos = append((*todos)[:index], (*todos)[index+1:]...)
+	return nil
+}
+
+func (todos *Todos) Toggle(index int) error {
+	t := *todos
+	err := utils.ValidateTodos(len(*todos), index)
+	if err != nil {
+		return err
+	}
+	
+	if !t[index].Completed {
+		t[index].Completed = false
+		t[index].CompletedAt = nil
+	} else {
+		now := time.Now()
+		t[index].Completed = true
+		t[index].CompletedAt = &now
+	}
+
 	return nil
 }

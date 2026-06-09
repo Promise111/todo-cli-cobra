@@ -25,7 +25,7 @@ func (todos *Todos) Add(title string) {
 }
 
 func (todos *Todos) Edit(index int, title string) error {
-	err := utils.ValidateTodos(todos, index)
+	err := utils.ValidateTodos(len(*todos), index)
 	if err != nil {
 		return err
 	}
@@ -35,7 +35,7 @@ func (todos *Todos) Edit(index int, title string) error {
 }
 
 func (todos *Todos) Delete(index int) error {
-	err := utils.ValidateTodos(todos, index)
+	err := utils.ValidateTodos(len(*todos), index)
 	if err != nil {
 		return err
 	}

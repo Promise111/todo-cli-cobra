@@ -2,11 +2,10 @@ package utils
 
 import (
 	"errors"
-	"github.com/promise111/todo-cli-cobra/internal"
 )
 
-func ValidateTodos (todos *internal.Todos,index int) error {
-	if index < 0 || index > len(*todos) {
+func ValidateTodos (todosLength int,index int) error {
+	if index < 0 || index > todosLength {
 		return errors.New("Error: Invalid index")
 	}
 	return nil

@@ -49,14 +49,14 @@ func (todos *Todos) Toggle(index int) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if !t[index].Completed {
-		t[index].Completed = false
-		t[index].CompletedAt = nil
-	} else {
 		now := time.Now()
 		t[index].Completed = true
 		t[index].CompletedAt = &now
+	} else {
+		t[index].Completed = false
+		t[index].CompletedAt = nil
 	}
 
 	return nil

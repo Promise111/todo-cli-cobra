@@ -2,7 +2,7 @@ package utils
 
 import (
 	"errors"
-	"todo-cli-cobra/internal"
+	"github.com/promise111/todo-cli-cobra/internal"
 )
 
 func ValidateTodos (todos *internal.Todos,index int) error {

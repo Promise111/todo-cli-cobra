@@ -2,7 +2,7 @@ package internal
 
 import (
 	"time"
-	"todo-cli-cobra/internal/utils"
+	"github.com/promise111/todo-cli-cobra/internal/utils"
 )
 
 type Todo struct {

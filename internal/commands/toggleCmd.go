@@ -20,7 +20,11 @@ var toggleCmd = cobra.Command{
 			fmt.Println("Error: Invalid index. Use a number.")
 			os.Exit(1)
 		}
-		Todos.Toggle(index)
+		toggErr := Todos.Toggle(index)
+		if toggErr != nil {
+			fmt.Println("Toggle Error: ", toggErr)
+			os.Exit(1)
+		}
 		fmt.Printf("Task toggled: %s", args[0])
 	},
 }

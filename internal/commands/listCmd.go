@@ -15,7 +15,6 @@ var listCmd = cobra.Command{
 	Short:   "List all todos",
 	Args:    cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
-		Todos.List(showCompleted, showPending)
 		if !showCompleted && !showPending {
 			fmt.Println("Listing all todos")
 		} else if showCompleted {
@@ -23,6 +22,7 @@ var listCmd = cobra.Command{
 		} else if showPending {
 			fmt.Println("Listing pending todos")
 		}
+		Todos.List(showCompleted, showPending)
 	},
 }
 

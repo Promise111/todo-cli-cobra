@@ -2,9 +2,10 @@ package commands
 
 import (
 	"fmt"
+	"os"
 
-	"github.com/spf13/cobra"
 	"github.com/promise111/todo-cli-cobra/internal"
+	"github.com/spf13/cobra"
 )
 
 var Todos = internal.Todos{}
@@ -19,5 +20,9 @@ var rootCmd = cobra.Command{
 }
 
 func Execute() {
-	rootCmd.Execute()
+	executeError := rootCmd.Execute()
+	if executeError != nil {
+		fmt.Println("Execute Error: ", executeError)
+		os.Exit(1)
+	}
 }

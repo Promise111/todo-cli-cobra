@@ -21,6 +21,8 @@ var listCmd = cobra.Command{
 			fmt.Println("Listing completed todos")
 		} else if showPending {
 			fmt.Println("Listing pending todos")
+		} else if showCompleted && showPending {
+			fmt.Println("Listing all todos")
 		}
 		Todos.List(showCompleted, showPending)
 	},

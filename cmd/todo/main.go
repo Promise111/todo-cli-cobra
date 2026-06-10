@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
 	"log"
 
 	"github.com/promise111/todo-cli-cobra/internal"
@@ -17,12 +17,12 @@ func main() {
 	// New Storage
 	storage := internal.NewStorage[internal.Todos]("todo.json")
 	storage.Load(&todos)
-	fmt.Printf("%+v \n\n", todos)
 	// todos.Add("Buy bread")
 	// todos.Add("Bake some meat pies")
 	// todos.Edit(1,"Sky dive later this morning")
-	todos.Toggle(1)
-	fmt.Printf("%+v \n\n", todos)
+	// todos.Toggle(1)
+	todos.List()
+	// fmt.Printf("%+v \n\n", todos)
 	storage.Save(todos)
 	commands.Execute()
 }

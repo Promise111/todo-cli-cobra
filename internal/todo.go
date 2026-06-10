@@ -1,8 +1,12 @@
 package internal
 
 import (
-	"github.com/promise111/todo-cli-cobra/internal/utils"
+	"os"
+	"strconv"
 	"time"
+
+	"github.com/aquasecurity/table"
+	"github.com/promise111/todo-cli-cobra/internal/utils"
 )
 
 type Todo struct {
@@ -60,4 +64,28 @@ func (todos *Todos) Toggle(index int) error {
 	}
 
 	return nil
+}
+
+func (todos *Todos) List() {
+
+	tbl := table.New(os.Stdout)
+
+	tbl.AddHeaders("s/n", "title", "completed", "createdAt", "completedAt")
+	tbl.SetRowLines(false)
+
+	for i, todo := range *todos {
+		sn := strconv.Itoa(i)
+		title := todo.Title
+		completed := "❌"
+		completedAt := ""
+		if todo.Completed == true {
+			completed = "✅"
+			completedAt = todo.CompletedAt.Format(time.RFC1123)
+		}
+		createdAt := todo.CreatedAt.Format(time.RFC1123)
+		tbl.AddRow(sn, title, completed, createdAt, completedAt)
+	}
+
+	tbl.Render()
+
 }

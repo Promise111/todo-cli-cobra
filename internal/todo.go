@@ -74,17 +74,44 @@ func (todos *Todos) List(showCompleted, showPending bool) {
 	tbl.AddHeaders("s/n", "title", "completed", "createdAt", "completedAt")
 	tbl.SetRowLines(false)
 
-	for i, todo := range *todos {
-		sn := strconv.Itoa(i)
-		title := todo.Title
-		completed := "❌"
-		completedAt := ""
-		if todo.Completed == true {
-			completed = "✅"
-			completedAt = todo.CompletedAt.Format(time.RFC1123)
+	if showCompleted {
+		for i, todo := range *todos {
+			if todo.Completed {
+				completed := "✅"
+				title := todo.Title
+				completedAt := todo.CompletedAt.Format(time.RFC1123)
+				createdAt := todo.CreatedAt.Format(time.RFC1123)
+				tbl.AddRow(strconv.Itoa(i), tml.Sprintf(utils.FormatTMLColor("green"), title), completed, createdAt, completedAt)
+			}
 		}
-		createdAt := todo.CreatedAt.Format(time.RFC1123)
-		tbl.AddRow(sn, tml.Sprintf("<cyan>%v</cyan>", title), completed, createdAt, completedAt)
+	}
+
+	if showPending {
+		for i, todo := range *todos {
+			if !todo.Completed {
+				completed := "❌"
+				title := todo.Title
+				completedAt := ""
+				createdAt := todo.CreatedAt.Format(time.RFC1123)
+				tbl.AddRow(strconv.Itoa(i), tml.Sprintf(utils.FormatTMLColor("red"), title), completed, createdAt, completedAt)
+			}
+		}
+	}
+
+	if !showCompleted && !showPending {
+		for i, todo := range *todos {
+			sn := strconv.Itoa(i)
+			title := todo.Title
+			completed := "❌"
+			completedAt := ""
+			if todo.Completed == true {
+				completed = "✅"
+				completedAt = todo.CompletedAt.Format(time.RFC1123)
+			}
+			createdAt := todo.CreatedAt.Format(time.RFC1123)
+
+			tbl.AddRow(sn, tml.Sprintf("<cyan>%v</cyan>", title), completed, createdAt, completedAt)
+		}
 	}
 
 	tbl.Render()

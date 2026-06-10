@@ -49,19 +49,18 @@ func (todos *Todos) Delete(index int) error {
 }
 
 func (todos *Todos) Toggle(index int) error {
-	t := *todos
 	err := utils.ValidateTodos(len(*todos), index)
 	if err != nil {
 		return err
 	}
 
-	if !t[index].Completed {
+	if !(*todos)[index].Completed {
 		now := time.Now()
-		t[index].Completed = true
-		t[index].CompletedAt = &now
+		(*todos)[index].Completed = true
+		(*todos)[index].CompletedAt = &now
 	} else {
-		t[index].Completed = false
-		t[index].CompletedAt = nil
+		(*todos)[index].Completed = false
+		(*todos)[index].CompletedAt = nil
 	}
 
 	return nil

@@ -1,8 +1,6 @@
 package commands
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
 )
 
@@ -13,10 +11,9 @@ var listCmd = cobra.Command{
 	Aliases: []string{"print", "list"},
 	Long:    "List all todos",
 	Short:   "List all todos",
-	Args:    cobra.ExactArgs(1),
+	Args:    cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(showCompleted, showPending)
-		// Todos.List(showCompleted, showPending)
+		Todos.List(showCompleted, showPending)
 	},
 }
 

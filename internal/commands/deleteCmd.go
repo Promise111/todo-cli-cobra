@@ -20,7 +20,11 @@ var deleteCmd = cobra.Command{
 			fmt.Println("Error: Invalid index. Use a number.")
 			os.Exit(1)
 		}
-		Todos.Delete(index)
+		deleteErr := Todos.Delete(index)
+		if deleteErr != nil {
+			fmt.Println("Delete Error: ", deleteErr)
+			os.Exit(1)
+		}
 		fmt.Printf("Task added: %s", args[0])
 	},
 }

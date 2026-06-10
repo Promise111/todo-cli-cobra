@@ -30,7 +30,11 @@ var editCmd = cobra.Command{
 			fmt.Println("Error: Title is required.")
 			os.Exit(1)
 		}
-		Todos.Edit(index, splitArgs[1])
+		editErr := Todos.Edit(index, splitArgs[1])
+		if editErr != nil {
+			fmt.Println("Edit Error: ", editErr)
+			os.Exit(1)
+		}
 		fmt.Printf("Task edited: %s", args[0])
 	},
 }

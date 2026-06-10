@@ -11,7 +11,7 @@ import (
 
 var editCmd = cobra.Command{
 	Use: "edit",
-	Aliases: []string{"enter"},
+	Aliases: []string{"update"},
 	Short: "Edit a todo",
 	Long: "Edit a todo by index and title",
 	Args: cobra.ExactArgs(1),
@@ -36,5 +36,5 @@ var editCmd = cobra.Command{
 }
 
 func init () {
-	editCmd.AddCommand(&editCmd)
+	rootCmd.AddCommand(&editCmd)
 }

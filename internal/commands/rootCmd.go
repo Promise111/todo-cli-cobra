@@ -10,7 +10,7 @@ import (
 var Todos = internal.Todos{}
 
 var rootCmd = cobra.Command{
-	Use:   "Todo",
+	Use:   "todo",
 	Short: "Manage daily tasks",
 	Long:  "Manage todos from the terminal with add, edit, delete, toggle, and list commands.",
 	Run: func(cmd *cobra.Command, args []string) {

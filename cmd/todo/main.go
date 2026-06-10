@@ -15,6 +15,6 @@ func main() {
 	// New Storage
 	storage := internal.NewStorage[internal.Todos]("todo.json")
 	storage.Load(&commands.Todos)
-	storage.Save(commands.Todos)
 	commands.Execute()
+	storage.Save(commands.Todos)
 }

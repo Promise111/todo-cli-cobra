@@ -29,6 +29,8 @@ func (todos *Todos) Add(title string) {
 	*todos = append(*todos, newTodo)
 }
 
+
+
 func (todos *Todos) Edit(index int, title string) error {
 	err := utils.ValidateTodos(len(*todos), index)
 	if err != nil {

@@ -4,7 +4,10 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
+	"github.com/promise111/todo-cli-cobra/internal"
 )
+
+var Todos = internal.Todos{}
 
 var rootCmd = cobra.Command{
 	Use:   "Todo",

@@ -7,6 +7,7 @@ import (
 
 	"github.com/aquasecurity/table"
 	"github.com/promise111/todo-cli-cobra/internal/utils"
+	"github.com/liamg/tml"
 )
 
 type Todo struct {
@@ -83,7 +84,7 @@ func (todos *Todos) List() {
 			completedAt = todo.CompletedAt.Format(time.RFC1123)
 		}
 		createdAt := todo.CreatedAt.Format(time.RFC1123)
-		tbl.AddRow(sn, title, completed, createdAt, completedAt)
+		tbl.AddRow(sn, tml.Sprintf("<cyan>%v</cyan>",title), completed, createdAt, completedAt)
 	}
 
 	tbl.Render()

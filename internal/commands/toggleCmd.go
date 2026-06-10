@@ -10,7 +10,7 @@ import (
 
 var toggleCmd = cobra.Command{
 	Use:     "toggle",
-	Aliases: []string{"toggle"},
+	Aliases: []string{"complete", "pending"},
 	Short:   "Toggle a todo",
 	Long:    "Toggle a todo by index",
 	Args:    cobra.ExactArgs(1),

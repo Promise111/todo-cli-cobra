@@ -10,7 +10,7 @@ var showCompleted bool
 var showPending bool
 var listCmd = cobra.Command{
 	Use:     "list",
-	Aliases: []string{"print", "list"},
+	Aliases: []string{"print"},
 	Long:    "List all todos",
 	Short:   "List all todos",
 	Args:    cobra.NoArgs,

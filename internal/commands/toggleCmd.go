@@ -8,6 +8,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var toggleStatus bool
 var toggleCmd = cobra.Command{
 	Use: "toggle",
 	Aliases: []string{"toggle"},
@@ -26,5 +27,6 @@ var toggleCmd = cobra.Command{
 }
 
 func init () {
+	toggleCmd.Flags().BoolVarP(&toggleStatus, "toggleStatus","t",false, "")
 	rootCmd.AddCommand(&toggleCmd)
 }

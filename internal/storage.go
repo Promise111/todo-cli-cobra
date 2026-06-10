@@ -2,6 +2,7 @@ package internal
 
 import (
 	"encoding/json"
+	"errors"
 	"os"
 )
 
@@ -37,7 +38,9 @@ func (s *Storage[T]) Save(data T) error {
 
 func (s *Storage[T]) Load(data *T) error {
 	fileData, err := os.ReadFile(dirName + "/" + s.FileName)
-	if err != nil {
+	if errors.Is(err, os.ErrNotExist) {
+		return nil
+	} else if err != nil {
 		return err
 	}
 

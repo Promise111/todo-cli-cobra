@@ -8,14 +8,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var toggleStatus bool
 var toggleCmd = cobra.Command{
-	Use: "toggle",
+	Use:     "toggle",
 	Aliases: []string{"toggle"},
-	Short: "Toggle a todo",
-	Long: "Toggle a todo by index",
-	Args: cobra.ExactArgs(1),
-	Run: func(cmd *cobra.Command, args []string){
+	Short:   "Toggle a todo",
+	Long:    "Toggle a todo by index",
+	Args:    cobra.ExactArgs(1),
+	Run: func(cmd *cobra.Command, args []string) {
 		index, err := strconv.Atoi(args[0])
 		if err != nil {
 			fmt.Println("Error: Invalid index. Use a number.")
@@ -26,7 +25,6 @@ var toggleCmd = cobra.Command{
 	},
 }
 
-func init () {
-	toggleCmd.Flags().BoolVarP(&toggleStatus, "toggleStatus","t",false, "")
+func init() {
 	rootCmd.AddCommand(&toggleCmd)
 }

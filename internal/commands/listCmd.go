@@ -4,6 +4,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var completed bool
+var pending bool
 var listCmd = cobra.Command{
 	Use: "list",
 	Aliases: []string{"print", "list"},
@@ -15,5 +17,7 @@ var listCmd = cobra.Command{
 }
 
 func init () {
+	toggleCmd.Flags().BoolVarP(&completed, "completed", "c", false, "List completed tasks")
+	toggleCmd.Flags().BoolVarP(&pending, "pending", "p", false, "List pending todos")
 	rootCmd.AddCommand(&listCmd)
 }

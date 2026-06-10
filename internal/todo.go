@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/aquasecurity/table"
-	"github.com/promise111/todo-cli-cobra/internal/utils"
 	"github.com/liamg/tml"
+	"github.com/promise111/todo-cli-cobra/internal/utils"
 )
 
 type Todo struct {
@@ -28,7 +28,6 @@ func (todos *Todos) Add(title string) {
 	}
 	*todos = append(*todos, newTodo)
 }
-
 
 func (todos *Todos) Edit(index int, title string) error {
 	err := utils.ValidateTodos(len(*todos), index)
@@ -68,7 +67,7 @@ func (todos *Todos) Toggle(index int) error {
 	return nil
 }
 
-func (todos *Todos) List() {
+func (todos *Todos) List(showCompleted, showPending bool) {
 
 	tbl := table.New(os.Stdout)
 
@@ -85,7 +84,7 @@ func (todos *Todos) List() {
 			completedAt = todo.CompletedAt.Format(time.RFC1123)
 		}
 		createdAt := todo.CreatedAt.Format(time.RFC1123)
-		tbl.AddRow(sn, tml.Sprintf("<cyan>%v</cyan>",title), completed, createdAt, completedAt)
+		tbl.AddRow(sn, tml.Sprintf("<cyan>%v</cyan>", title), completed, createdAt, completedAt)
 	}
 
 	tbl.Render()

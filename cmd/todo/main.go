@@ -14,11 +14,15 @@ func main() {
 
 	// initiate cobra on startup
 	var todos = internal.Todos{}
+	// New Storage
+	storage := internal.NewStorage[internal.Todos]("todo.json")
+	storage.Load(&todos)
 	fmt.Printf("%+v \n\n", todos)
-	todos.Add("Buy bread")
-	todos.Add("Bake meat pies")
-	todos.Edit(1,"Sky dive later this morning")
+	// todos.Add("Buy bread")
+	// todos.Add("Bake some meat pies")
+	// todos.Edit(1,"Sky dive later this morning")
 	todos.Toggle(1)
 	fmt.Printf("%+v \n\n", todos)
+	storage.Save(todos)
 	commands.Execute()
 }

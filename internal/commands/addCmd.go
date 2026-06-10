@@ -14,7 +14,7 @@ var addCmd = cobra.Command{
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string){
 		Todos.Add(args[0])
-		fmt.Printf("Task added: %s", args[0])
+		fmt.Printf("Task added: %s \n", args[0])
 	},
 }
 

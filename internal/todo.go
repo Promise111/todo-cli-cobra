@@ -103,7 +103,7 @@ func (todos *Todos) List(showCompleted, showPending bool) {
 			title := todo.Title
 			completed := "❌"
 			completedAt := ""
-			if todo.Completed == true {
+			if todo.Completed {
 				completed = "✅"
 				completedAt = todo.CompletedAt.Format(time.RFC1123)
 			}

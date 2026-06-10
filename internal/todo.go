@@ -30,7 +30,6 @@ func (todos *Todos) Add(title string) {
 }
 
 
-
 func (todos *Todos) Edit(index int, title string) error {
 	err := utils.ValidateTodos(len(*todos), index)
 	if err != nil {

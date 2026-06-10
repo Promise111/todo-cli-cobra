@@ -18,7 +18,7 @@ var editCmd = cobra.Command{
 	Run: func(cmd *cobra.Command, args []string){
 		splitArgs := strings.SplitN(args[0], ":", 2)
 		if len(splitArgs) != 2 {
-			fmt.Println("Error: Invalid input format. Use 'add:title'")
+			fmt.Println("Error: Invalid input format. Use 'index:title'")
 			os.Exit(1)
 		}
 		index, err := strconv.Atoi(splitArgs[0])

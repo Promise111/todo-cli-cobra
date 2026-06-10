@@ -25,7 +25,7 @@ var deleteCmd = cobra.Command{
 			fmt.Println("Delete Error: ", deleteErr)
 			os.Exit(1)
 		}
-		fmt.Printf("Task added: %s", args[0])
+		fmt.Printf("Task deleted: %s", args[0])
 	},
 }
 

@@ -31,7 +31,7 @@ var editCmd = cobra.Command{
 			os.Exit(1)
 		}
 		Todos.Edit(index, splitArgs[1])
-		fmt.Printf("Task added: %s", args[0])
+		fmt.Printf("Task edited: %s", args[0])
 	},
 }
 

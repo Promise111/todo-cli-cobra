@@ -5,7 +5,7 @@ import (
 )
 
 func ValidateTodos(todosLength int, index int) error {
-	if index < 0 || index > todosLength {
+	if index < 0 || index >= todosLength {
 		return errors.New("Error: Invalid index")
 	}
 	return nil

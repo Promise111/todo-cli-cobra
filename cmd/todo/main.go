@@ -10,11 +10,12 @@ import (
 
 func main() {
 	log.SetPrefix("Todo CLI with cobra: ")
-	log.SetFlags(1)
-
+	log.SetFlags(0)
+	
 	// New Storage
 	storage := internal.NewStorage[internal.Todos]("todo.json")
 	storage.Load(&commands.Todos)
+	log.Println("todos length is ", len(commands.Todos))
 	commands.Execute()
 	storage.Save(commands.Todos)
 }
